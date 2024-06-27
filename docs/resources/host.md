@@ -22,6 +22,7 @@ provider "icinga2" {
 resource "icinga2_host" "host" {
   hostname      = "terraform-host-1"
   address       = "10.10.10.1"
+  address6      = "ffff::1"
   groups        = ["example-hostgroup"]
   check_command = "hostalive"
   templates     = ["bp-host-web"]
@@ -39,6 +40,7 @@ resource "icinga2_host" "host" {
 The following arguments are supported:
 
 * `address`  - (Required) The address of the host.
+* `address6` - (Required) IPv6 address of the host. (Can be blank)
 * `check_command` - (Required) The name of an existing Icinga2 CheckCommand object that is used to determine if the host is available or not.
 * `groups` - (Optional) The groups of the host.
 * `hostname` - (Required) The hostname of the host.
